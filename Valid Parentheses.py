@@ -15,66 +15,33 @@
 # Example 3:
 # Input: s = "(]"
 # Output: false
-
-
-def stupid_method_calculate_brackets(text, current_dict):
+def stack_method(text, moder_dict_bracket=None):
+    stack_list = []
     for letter in text:
-        if letter == '(':
-            modern_dict_bracket['('] = modern_dict_bracket['('] + 1
-        if letter == ')':
-            modern_dict_bracket[')'] = modern_dict_bracket[')'] + 1
-        if letter == ']':
-            modern_dict_bracket[']'] = modern_dict_bracket[']'] + 1
-        if letter == '[':
-            modern_dict_bracket['['] = modern_dict_bracket['['] + 1
-        if letter == '{':
-            modern_dict_bracket['{'] = modern_dict_bracket['{'] + 1
-        if letter == '}':
-            modern_dict_bracket['}'] = modern_dict_bracket['}'] + 1
-
-    if modern_dict_bracket['('] == modern_dict_bracket[')']:
-        if modern_dict_bracket['['] == modern_dict_bracket[']']:
-            if modern_dict_bracket['{'] == modern_dict_bracket['}']:
-                return True
-            else:
+        if letter in ['(', '[', '{']:
+            stack_list.append(letter)
+        elif letter in [')', ']', '}']:  # x - последний элемент положенный сюда
+            if not stack_list:
                 return False
-        else:
+            last_item = stack_list.pop()
+            if last_item == '(' and letter == ')':
+                continue
+            if last_item == '[' and letter == ']':
+                continue
+            if last_item == '{' and letter == '}':
+                continue
             return False
-    else:
-        return False
-
-
-def normal_method(text, moder_dict_bracket=None):
-    amount_brackets = 0
-
-    for idx, letter in enumerate(text):  # как-то до ПРЕДПОСЛЕДНЕГО нужно идти
-        # открывашки
-        if letter not in ['(', '[', '{'] and idx == 0:
-            return False
-
-        # логика
-        # если latter = (, то следующий должен быть )
-        # если latter = [, то следующий должен быть ]
-        # если latter = {, то следующий должен быть }
-        if letter == ')' and text[idx - 1] == '(':
-            amount_brackets -= 1
-        elif letter == ']' and text[idx - 1] == '[':
-            amount_brackets -= 1
-        elif letter == '}' and text[idx - 1] == '{':
-            amount_brackets -= 1
-        else:
-            amount_brackets += 1
-            continue
-
-    if amount_brackets != 0:
+    if stack_list:
         return False
     else:
         return True
 
 
-modern_dict_bracket = {'(': 0, ')': 0, '[': 0, ']': 0, '{': 0, '}': 0}
-list_bracket = [['(', ')'], ['[', ']'], ['{', '}']]
-text = '(]'
-print(modern_dict_bracket)
+# text = '(])' # False
+# text = '()[' # False
+# text = '([)]' # False
+text = '()'  # False
+# print(modern_dict_bracket)
 # print(stupid_method_calculate_brackets(text, modern_dict_bracket))
-print(normal_method(text))
+# print(normal_method(text))
+print(stack_method(text))
