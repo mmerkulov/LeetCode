@@ -44,6 +44,6 @@ def custom_get_last_word(s):
 
 s = "luffy is still  joyboy "
 # s = '        )  '
-s = 'a '
+# s = 'a '
 print(get_last_word(s))
 print(custom_get_last_word(s))
