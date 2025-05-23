@@ -104,9 +104,74 @@ def shift_list_3(target: int, lst: list):
     return lst[len(lst) - range_lst:] + lst[:-range_lst]
 
 
+def fold_char(text: str):
+    if not text:
+        return 'empty'
+    amount = 0
+    answer = ''
+    for i in range(1, len(text)):
+        amount += 1
+        if text[i - 1] != text[i]:
+            answer += text[i - 1] + str(amount)
+            amount = 0
+    answer += text[-1] + str(amount + 1 if amount != 0 else 1)
+    return answer
+
+
+def fold_char3(text: str):
+    answer = {}
+    for char in text:
+        if char not in answer:
+            answer[char] = 1
+        else:
+            answer[char] += 1
+    return ''.join([f'{key}{value}' for key, value in answer.items()])
+
+
+# x = 'AAAAAGGGGHHHTTLLLLLLDDDFF'  # A5G4H3T2L6D3
+# # x = 'AAABB'
+# print(fold_char(x))
+# x = 'AAAC'
+# print(fold_char(x))
+# print(fold_char3(x))
+
+
 def changing_direction(elements: list[int]) -> int:
+    if len(elements) < 3:
+        return 0
     result = 0
-    for i in range(len(elements) - 1):
-        if elements[i] > elements[i + 1]:
+    prev_direct = '+' if elements[0] < elements[1] else '-' if elements[0] > elements[1] else '='
+    for idx in range(1, len(elements)):
+        current_direct = '+' if elements[idx - 1] < elements[idx] else '-' if elements[idx - 1] > elements[idx] else '='
+        if current_direct != prev_direct:
+            print(elements[idx - 1], elements[idx], prev_direct, current_direct)
             result += 1
-    return 0
+            prev_direct = current_direct
+    print(result)
+    return result
+
+def changing_direction2(elements: list[int]) -> int:
+    if len(elements) < 3:
+        return 0
+    dirs = []
+    for i, j in zip(elements[:-1], elements[1:]):
+        print(i, j)
+        if j > i and (not dirs or dirs[-1] == '-'):
+           dirs.append('+')
+        if j < i and (not dirs or dirs[-1] == '+'):
+           dirs.append('-')
+    return len(dirs) - 1
+
+
+
+
+
+# changing_direction2([1, 2, 3, 4, 5])  # 0
+# changing_direction2([1, 2, 3, 2, 1])  # 1
+# changing_direction2([1, 2, 2, 1, 2, 2]) # 2
+changing_direction2([6, 6, 6, 4, 1, 2, 5, 9, 7, 8, 5, 9, 4, 2, 6])  # 7
+
+# z = [1, 2, 3, 4]
+# z1 = [2, 3, 4]
+# for i, j in zip(z, z[1:]):
+#     print(i, j)
