@@ -19,13 +19,11 @@ def sum_two_bin(a, b):
     print(a)
     print(b)
     for idx, val in enumerate(smaller_num):
-        # print(a[idx], b[idx])
         c.append(1 if int(a[idx]) + int(b[idx]) >= 1 else 0)
+    return ''.join(c)
 
-
-    print(c)
 
 a = '1010'
 b = '110'
 # НЕ СДЕЛАЛ
-#sum_two_bin(a, b)
+print(sum_two_bin(a, b))

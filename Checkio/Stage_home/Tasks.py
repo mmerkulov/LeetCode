@@ -162,16 +162,13 @@ def changing_direction2(elements: list[int]) -> int:
            dirs.append('-')
     return len(dirs) - 1
 
-
-
-
-
 # changing_direction2([1, 2, 3, 4, 5])  # 0
 # changing_direction2([1, 2, 3, 2, 1])  # 1
 # changing_direction2([1, 2, 2, 1, 2, 2]) # 2
-changing_direction2([6, 6, 6, 4, 1, 2, 5, 9, 7, 8, 5, 9, 4, 2, 6])  # 7
+# changing_direction2([6, 6, 6, 4, 1, 2, 5, 9, 7, 8, 5, 9, 4, 2, 6])  # 7
 
-# z = [1, 2, 3, 4]
-# z1 = [2, 3, 4]
-# for i, j in zip(z, z[1:]):
-#     print(i, j)
+
+def iterfile(filename: str):
+    with open(filename, 'rb') as file:
+        while chunk := file.read(1024 * 1024):
+            yield chunk

@@ -41,9 +41,18 @@ def custom_get_last_word(s):
 
     return idx
 
+def lengthOfLastWord(s: str) -> int:
+    word_list = s.split()
+    result = len(word_list[0])
+    for x in word_list:
+        if len(x) > result:
+            result = len(x)
+    return result
 
 s = "luffy is still  joyboy "
+s = "Hello World"
 # s = '        )  '
 # s = 'a '
-print(get_last_word(s))
-print(custom_get_last_word(s))
+# print(get_last_word(s))
+# print(custom_get_last_word(s))
+print(lengthOfLastWord(s))
