@@ -35,7 +35,6 @@ def mergeTwoLists(list1: ListNode, list2: ListNode) -> ListNode:
 
     # Attach the remaining nodes
     temp.next = curr1 if curr1 else curr2
-
     return dummyNode.next
 
 
@@ -45,5 +44,6 @@ list1 = ListNode(val=1, next=ListNode(val=2, next=ListNode(val=3, next=None)))
 list2 = ListNode(val=1, next=ListNode(val=3, next=ListNode(val=4, next=None)))
 
 # a = mergeTwoLists(list1, list2)
+
 
 print_llist(mergeTwoLists(list1, list2))

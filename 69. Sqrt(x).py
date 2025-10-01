@@ -100,3 +100,6 @@ x = 4096
 lis = [84, 92, 4]
 for idx, x in enumerate(reversed(lis)):
     print(idx, x)
+
+
+# sqrt(x) = (a + b)/

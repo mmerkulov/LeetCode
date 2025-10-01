@@ -16,11 +16,28 @@ def gogo(s: str) -> int:
         else:
             letters_dict[i] = 1
     print(letters_dict)
-    return 0
+
+    answer = 0
+    has_odd = False
+    for i, k in letters_dict.items():
+        if k % 2 == 0:
+            answer += k
+        else:
+            answer += k - 1
+            has_odd = True
+
+    if has_odd:
+        answer += 1
+
+    return answer
 
 
 
 z = 'abccccdd'
-gogo(z)
+print(gogo(z))
 z = 'aabc'
-gogo(z)
+print(gogo(z))
+z = 'ссс'
+print(gogo(z))
+z = 'bb'
+print(gogo(z))

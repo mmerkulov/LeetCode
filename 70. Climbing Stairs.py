@@ -23,9 +23,21 @@ Explanation: There are three ways to climb to the top.
 """
 
 def clib_stairs(n: int) -> int:
-    pass
+    a, b = 1, 2
+
+    if n == 1:
+        return a
+    if n == 2:
+        return b
+
+    for i in range(1, n):
+        print(b, a + b)
+        a, b = b, a + b
+
+    return a
 
 
+print(clib_stairs(n=6))
 """
 n = 4
 1. 1 + 1 + 1 + 1
