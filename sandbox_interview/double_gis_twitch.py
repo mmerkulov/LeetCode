@@ -24,4 +24,4 @@ def print_in_box(text: str, width: int, high: int) -> None:
     print('#' * width)
 
 
-print_in_box('hello, !', 15, 5)
+print_in_box('hello, fgtj7 dfhdhj!', 27, 9)

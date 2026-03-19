@@ -373,7 +373,8 @@ from typing import Any, Generator
 #         if cls.__instance2 is None:
 #             cls.__instance2 = Singleton()
 #         return cls.__instance2
-#
+
+
 #
 # ###################################
 # this_is_set = {1, 2, 3, 62, 42}
@@ -463,14 +464,14 @@ from typing import Any, Generator
 # print(qwe)
 ############################################
 
-a = ('asd2', 2637, 3252, 'hd6', )
-print(id(a), id(a[:]), id(a[1:2]))
-a = 4
-b = [4]
-result = (a, b) # 4, [4]
-a = 5
-b.append([5]) # [4,5]
-print(result, a)
+# a = ('asd2', 2637, 3252, 'hd6', )
+# print(id(a), id(a[:]), id(a[1:2]))
+# a = 4
+# b = [4]
+# result = (a, b) # 4, [4]
+# a = 5
+# b.append([5]) # [4,5]
+# print(result, a)
 
 ############################################
 # def n1():
@@ -491,3 +492,30 @@ print(result, a)
 # # print(type(a), a, type(b), b, type(c), c, d == e, d is e, e is d, id(d), id(e))
 # print(f == g, f is g, g is f, id(f), id(g))
 # # constant folding - оптимизация компилятора констант
+
+##########################################
+
+# x = None
+# z = bool(False)
+# print(type(x), type(z))
+
+# x = (1, 2, 'a', 'b', 1, 'a')
+# print(type(x), x)
+# z = {1, 2, 'a', 'b', 1, 'a'}
+# z.add(3)
+# print(type(z), z)
+
+
+####
+x = 2
+
+if x == '' or x == 1:
+    print('Ras4et')
+elif x == 2:
+    print('POstav')
+else:
+    print('out')
+
+
+
+

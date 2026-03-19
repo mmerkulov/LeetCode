@@ -1,7 +1,7 @@
 # Задача 1 — параметризация и фикстуры
 #
 # У тебя есть функция:
-#
+
 def is_valid_age(age: int) -> bool:
     if not isinstance(age, int) or age < 0 or age > 120:
         return False
@@ -30,3 +30,8 @@ def logger_parameters(request):
                                          (-1, False),(121, False),('18', False),(None, False)])
 def test_check_age(age, result):
     assert is_valid_age(age=age) == result
+
+
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
